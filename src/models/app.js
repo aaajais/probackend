@@ -45,11 +45,11 @@ app.post("/registration", async (req, res) => {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
-                gender: req.body.gender,
-                phone: req.body.phone,
-                // age: req.body.age,
-                password:password,
-                confirmpassword: cpassword
+                // gender: req.body.gender,
+                // phone: req.body.phone,
+                // // age: req.body.age,
+                // password:password,
+                // confirmpassword: cpassword
 
             })
 
