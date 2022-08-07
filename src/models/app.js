@@ -29,6 +29,9 @@ app.get("/", (req, res) => {
 app.get("/registration", (req, res) => {
     res.render("registration")
 });
+app.get("/login", (req, res) => {
+    res.render("login")
+});
 
 app.post("/registration", async (req, res) => {
     try {
@@ -45,11 +48,12 @@ app.post("/registration", async (req, res) => {
                 firstname: req.body.firstname,
                 lastname: req.body.lastname,
                 email: req.body.email,
-                // gender: req.body.gender,
-                // phone: req.body.phone,
-                // // age: req.body.age,
-                // password:password,
-                // confirmpassword: cpassword
+                gender: req.body.gender,
+                phone: req.body.phone,
+                // age: req.body.age,
+                password:password,
+                confirmpassword: cpassword,
+                answer:req.body.answer
 
             })
 
@@ -63,6 +67,22 @@ app.post("/registration", async (req, res) => {
         // res.send(req.body.firstname);
     } catch (error) {
         res.status(400).send(error);
+    }
+})
+
+app.post("/login",async(req,res)=>{
+    try{
+        const email= req.body.email;
+        const password= req.body.password;
+        res.send(useremail);
+        console.log(useremail);
+
+      const useremail = await  Registers.findOne({email:email});
+
+        console.log('${email} and password is ${password}')
+    }catch(error){
+            res.status(400).send("invalid email")
+        
     }
 })
 app.listen(port, () => {
